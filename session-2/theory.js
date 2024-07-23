@@ -109,17 +109,17 @@ Routing in Express is used to determine how an application responds to a client 
 Example:
 */
 const express = require('express');
-const app = express();
+const app2 = express();
 
-app.get('/', (req, res) => {
+app2.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.post('/submit', (req, res) => {
+app2.post('/submit', (req, res) => {
     res.send('Form submitted!');
 });
 
-app.listen(3000, () => {
+app2.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
 
