@@ -1,7 +1,7 @@
 // using express 
 //
 // 1.Create an app instance
-import { getCurrencies } from "./controllers/currencies.controllers";
+const getCurrencies = require("./controllers/currencies.controllers");
 const currencies = require("./currencies.json");
 const data = currencies.data;
 

@@ -1,6 +1,7 @@
+const currencies = require("../currencies.json");
+const data = currencies.data;
 
-
-export const getCurrencies = (req, res) => {
+const getCurrencies = (req, res) => {
     console.log(req.query);
     const { min_value } = req.query;
     if (min_value) {
