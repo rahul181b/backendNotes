@@ -16,7 +16,24 @@ const getCurrencies = (req, res) => {
     // res.end();
 }
 
-module.exports = getCurrencies;
+const getCurrencyWithSymbol = (req, res) => {
+    //the url should be http://localhost:8082/currencies/usd
+    const symbol = req.params.symbol;
+
+    console.log(symbol);
+    const result = data.find((item) => item.id.toLowerCase() === symbol.toLowerCase());
+    if (result) {
+        res.status(200).json(result);
+    } else {
+        res.sendStatus(404);
+    }
+
+}
+
+module.exports = {
+    getCurrencies,
+    getCurrencyWithSymbol
+}
 
 
 /*

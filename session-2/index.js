@@ -1,9 +1,13 @@
 // using express 
 //
 // 1.Create an app instance
-const getCurrencies = require("./controllers/currencies.controllers");
-const currencies = require("./currencies.json");
-const data = currencies.data;
+const { getCurrencies } = require("./controllers/currencies.controllers");
+const { getCurrencyWithSymbol } = require("./controllers/currencies.controllers")
+
+const { getAllUsers,
+    getUsersById,
+    searchUsersByQuery } = require("./controllers/users.controllers")
+
 
 const express = require("express");
 
@@ -24,19 +28,7 @@ const PORT = 8082;
 //     res.json(data);
 //     res.end();
 // })
-app.get("/currencies/:symbol", (req, res) => {
-    //the url should be http://localhost:8082/currencies/usd
-    const symbol = req.params.symbol;
-
-    console.log(symbol);
-    const result = data.find((item) => item.id.toLowerCase() === symbol.toLowerCase());
-    if (result) {
-        res.status(200).json(result);
-    } else {
-        res.sendStatus(404);
-    }
-
-});
+app.get("/currencies/:symbol", getCurrencyWithSymbol);
 //using query parameters
 app.get("/currencies", getCurrencies);
 
@@ -44,6 +36,9 @@ app.get("/", (req, res) => {
     res.send(`<h1>currencies data<h1>`);
     res.end();
 })
+app.get("/users/search", searchUsersByQuery);
+app.get("/users", getAllUsers);
+app.get("/users/:uuid", getUsersById);
 
 
 // 2.Listening to port using listen
