@@ -1,0 +1,6 @@
+**In This Session**
+
+--Express Routes
+--Validating Routes
+--Using Joi
+--Storing Server Secrets with environment variables
