@@ -1,5 +1,6 @@
 const currencies = require("../currencies.json");
 const data = currencies.data;
+require("dotenv").config();
 const PASSWORD = process.env.ROUTE_PASSWORD;
 
 
