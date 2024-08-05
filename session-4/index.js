@@ -2,6 +2,7 @@ const express = require("express")
 
 const app = express();
 
+const { verifyAuth } = require("./middlewares/verifyAuth")
 const currencyRoute = require("./routers/currencies.routes");
 const userRoute = require("./routers/users.routes")
 
@@ -11,9 +12,10 @@ const userRoute = require("./routers/users.routes")
 
 
 const PORT = 8082;
-
-app.use("/currencies", currencyRoute);
+app.use(verifyAuth);
 app.use("/users", userRoute);
+app.use("/currencies", currencyRoute);
+
 
 
 app.get("/", (req, res) => {

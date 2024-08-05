@@ -1,28 +1,12 @@
 const currencies = require("../currencies.json");
 const data = currencies.data;
-require("dotenv").config();
-const PASSWORD = process.env.ROUTE_PASSWORD;
 
 
-//to verify the authorization --use postman to put password in header 
-const verifyAuth = (req) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
-        return false;
-    }
 
-    if (authorization !== PASSWORD) {
-        return false;
-    }
 
-    return true;
-};
 
 const getCurrencies = (req, res) => {
-    if (!verifyAuth(req)) {
-        res.status(403).json({ message: "Unauthorized Request" });
-        return;
-    }
+
 
     console.log(req.query);
     const { min_value } = req.query;
